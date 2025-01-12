@@ -4,6 +4,7 @@ import axios from 'axios';
 import BookForm from '../components/BookForm';
 
 function BookAddEditPage() {
+    const url=process.env.REACT_APP_BASE_URL
   const [form, setForm] = useState({
     title: '',
     authors: '',
@@ -18,7 +19,7 @@ function BookAddEditPage() {
   const navigate = useNavigate();
 
   const fetchBook = async (id) => {
-    const { data } = await axios.get(`http://localhost:5000/books/${id}`);
+    const { data } = await axios.get(`${url}/books/${id}`);
     setForm(data);
   };
 
@@ -35,9 +36,9 @@ function BookAddEditPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (id) {
-      await axios.put(`http://localhost:5000/books/${id}`, form);
+      await axios.put(`${url}/books/${id}`, form);
     } else {
-      await axios.post('http://localhost:5000/books', form);
+      await axios.post(`${url}/books`, form);
     }
     navigate('/books');
   };

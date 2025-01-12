@@ -5,9 +5,9 @@ import BookList from '../components/BookList';
 
 function BookListPage() {
   const [books, setBooks] = useState([]);
-
+  const url=process.env.REACT_APP_BASE_URL
   const fetchBooks = async () => {
-    const { data } = await axios.get('http://localhost:5000/books');
+    const { data } = await axios.get(`${url}/books`);
     setBooks(data);
   };
 
@@ -16,7 +16,7 @@ function BookListPage() {
   }, []);
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/books/${id}`);
+    await axios.delete(`${url}/books/${id}`);
     fetchBooks();
   };
 
