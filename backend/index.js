@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// const cors = require('cors');
+ const cors = require('cors');
 const express = require('express');
 const bookRoutes = require('./routes/bookRoutes.js');
 require('dotenv').config();
@@ -10,7 +10,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(morgan('dev'));
-// app.use(cors());
+ app.use(cors());
 
 // DataBase Connection
 
