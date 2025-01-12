@@ -6,13 +6,14 @@ require('dotenv').config();
 const morgan =require('morgan')
 
 const app = express();
-const allowedOrigins = process.env.FRONTEND_URL
+// const allowedOrigins = process.env.FRONTEND_URL
 
 // Middleware
 app.use(express.json());
 app.use(morgan('dev'));
-app.use(cors({  origin: allowedOrigins,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],}));
+app.use(cors({  origin: '*', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'], }));
 
 // DataBase Connection
 
